@@ -32,12 +32,12 @@
             <table class="table table-hover datatable">
               <thead>
                 <tr class="text-center">
-                  <th scope="col">#</th>
-                  <th>Image</th>
-                  <th>Name</th>
-                  <th>Price</th>
-                  <th>Description</th>
-                  <th>Action</th>
+                  <th class="text-center" scope="col">#</th>
+                  <th class="text-center">Image</th>
+                  <th class="text-center">Name</th>
+                  <th class="text-center">Price</th>
+                  <th class="text-center">Description</th>
+                  <th class="text-center">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -54,8 +54,8 @@
                   <td>{{Str::limit($item->description,50)}}</td>
                   <td>
 
-                   <a class="btn btn-sm btn-primary" href="edit/product/{{$item->id}}">Edit</a> 
-                   <a class="btn btn-sm btn-danger" onclick="return confirm('are u sure to delete this item?')" href="delete/product/{{$item->id}}">Delete</a> 
+                   <a class="btn btn-sm btn-outline-secondary" href="edit/product/{{$item->id}}"><span class="ri ri-edit-box-fill"></span></a> 
+                   <a class="btn btn-sm btn-outline-danger" onclick="return confirm('are u sure to delete this item?')" href="delete/product/{{$item->id}}"><span class="ri ri-delete-bin-6-fill"></span></a> 
                   </td>
                 </tr>
                 

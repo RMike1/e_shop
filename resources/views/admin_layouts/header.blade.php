@@ -145,7 +145,7 @@ if(Session::has('user'))
                 
               <li class="message-item">
                 <a href="{{url('view/cart',$notification->cart_id)}}">
-                  <img src="/admin/assets/img/messages-1.jpg" alt="" class="rounded-circle">
+                  <img src="/admin/assets/img/messages-3.jpg" alt="" class="rounded-circle">
                 <div>
                   <h4>{{$notification->user_name}}</h4>
                   <p>has added {{$notification->product_name}} in the cartlist</p>
@@ -192,7 +192,7 @@ if(Session::has('user'))
                 
               <li class="message-item">
                 <a href="{{url('view/order',$order->orders_id)}}">
-                  <img src="/admin/assets/img/messages-1.jpg" alt="" class="rounded-circle">
+                  <img src="/admin/assets/img/messages-3.jpg" alt="" class="rounded-circle">
                 <div>
                   <h4>{{$order->user_name}}</h4>
                   <p>has ordered {{$order->product_name}}</p>
