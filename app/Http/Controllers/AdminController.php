@@ -405,4 +405,40 @@ class AdminController extends Controller
         
     }
 
+    public function total_order(){
+
+        return Order::all()->count('id');
+    }
+
+    public function orders()
+    {
+
+
+        $user=Session::get('user');
+
+        return DB::table('orders')
+        ->join('products','orders.product_id','=','products.id')
+        ->join('users','orders.user_id','=','users.id')
+        ->orderby('orders.id','desc')
+        ->select('products.*','products.name as product_name','orders.id as orders_id','products.price as products_price','orders.*','users.*','orders.quantity as ordersquantity', 'orders.total_amount as orders_total_amount','users.name as user_name')
+        ->paginate(3);
+
+        
+    }
+
+   public function view_id_order($req)
+   {
+
+    $info=Order::find($req);
+
+    $data= DB::table('orders')
+        ->join('products','orders.product_id','=','products.id')
+        ->join('users','orders.user_id','=','users.id')
+        ->where('orders.id',$req)
+        ->select('products.*','products.name as product_name','orders.id as orders_id','products.price as products_price','orders.*','users.*','orders.quantity as ordersquantity', 'orders.total_amount as orders_total_amount','users.name as user_name')
+        ->get();
+
+    return view('admin.view_id_orders',compact('data'));
+   }
+
 }

@@ -4,8 +4,12 @@ use App\Http\Controllers\AdminController;
 if(Session::has('user'))
 {
   $total_cart=AdminController::total();
+  
+  $total_order=AdminController::total_order();
 
   $notification=AdminController::notification();
+  
+  $order=AdminController::orders();
 
 }
 
@@ -116,7 +120,9 @@ if(Session::has('user'))
 
           </ul><!-- End Notification Dropdown Items -->
 
-        </li><!-- End Notification Nav -->
+        </li>
+        
+        <!-- End Notification Nav -->
 
         <li class="nav-item dropdown">
 
@@ -127,9 +133,9 @@ if(Session::has('user'))
           
           <!-- End Messages Icon -->
 
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages" >
             <li class="dropdown-header">
-              You have {{$total_cart}} items in the cart
+              there are {{$total_cart}} pendings in the cartlist
               <a href="{{url('view_cartlist')}}"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
             </li>
             <li>
@@ -153,12 +159,67 @@ if(Session::has('user'))
             @endforeach
 
             <li class="dropdown-footer">
-              <a href="#">Show all</a>
+              <a href="{{url('view_cartlist')}}">Show all</a>
             </li>
 
           </ul><!-- End Messages Dropdown Items -->
 
         </li><!-- End Messages Nav -->
+
+
+
+
+
+
+        <li class="nav-item dropdown">
+
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-card-list"></i>
+            <span class="badge bg-success badge-number">{{$total_order}}</span>
+          </a>
+          
+          <!-- End Messages Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+            <li class="dropdown-header">
+              there are {{$total_order}} in the order list
+              <a href="{{url('view_orders')}}"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+              @foreach ($order as $order)
+                
+              <li class="message-item">
+                <a href="{{url('view/order',$order->orders_id)}}">
+                  <img src="/admin/assets/img/messages-1.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>{{$order->user_name}}</h4>
+                  <p>has ordered {{$order->product_name}}</p>
+                  <p>a min. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            @endforeach
+
+            <li class="dropdown-footer">
+              <a href="{{url('view_orders')}}">Show all</a>
+            </li>
+
+          </ul><!-- End Messages Dropdown Items -->
+
+        </li><!-- End Messages Nav -->
+
+
+
+
+
+        
+
+        
 
         <li class="nav-item dropdown pe-3">
 

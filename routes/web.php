@@ -85,5 +85,7 @@ Route::post('send_user_email/{id}',[AdminController::class,'send_user_email']);
 
 Route::post('search/orders',[AdminController::class,'search_orders']);
 
+Route::get('view/order/{id}',[AdminController::class,'view_id_order']);
+
 
 

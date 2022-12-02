@@ -114,6 +114,8 @@
                    
                    <a href="{{url('send_email',$item->orders_id)}}" class="btn btn-sm btn-secondary">Send Email</a>
                    
+                   <a href="{{url('view/order',$item->orders_id)}}" class="btn btn-sm btn-primary">View</a>
+                   
                    
 
                   </td>
