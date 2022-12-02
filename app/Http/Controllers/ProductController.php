@@ -16,27 +16,27 @@ class ProductController extends Controller
     
     public function index(){
 
-        $user=Session::get('user');
-        if(Session::has('user'))
-        {
-            if($user->usertype=='0')
-            {
+        // $user=Session::get('user');
+        // // if(Session::has('user'))
+        // // {
+        //     if($user->usertype=='0')
+        //     {
                 $data=Product::paginate(6);
         
                 return view('user.index',compact('data'));
 
-            }
-            else
-            {
-                return redirect()->back();
-            }
+            // }
+            // else
+            // {
+            //     return redirect()->back();
+            // }
 
-        }
-        else
-        {
-            return redirect('/login');
+        // }
+        // else
+        // {
+        //     return redirect('/login');
 
-        }
+        // }
     }
 
     public function view($req)

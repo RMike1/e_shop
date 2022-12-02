@@ -295,27 +295,33 @@ class AdminController extends Controller
     }
     else
     return view('admin.blank');
-
+  
     }
 
-
-    
     public function Redirect()
     {
         $user=Session::get('user');
         if(Session::has('user'))
         {
-            if($user->usertype=='0')
+            if($user->usertype=='1')
             {
-                $data=Product::paginate(6);
+                $data=Product::get();
         
-                return view('user.index',compact('data'));
+                return view('admin.index',compact('data'));
             }
             else
-                return view('admin.index');
+            {
+                $data=Product::paginate(6);
+                return view('user.index',compact('data'));
+
+            }
         }
         else
-            return redirect()->back();
+        {
+            $data=Product::paginate(6);
+            return view('user.index',compact('data'));
+
+        }
     }
 
     public function send_email($req)
