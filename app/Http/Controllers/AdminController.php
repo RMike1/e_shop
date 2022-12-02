@@ -146,7 +146,7 @@ class AdminController extends Controller
                 ->join('products','carts.product_id','=','products.id')
                 ->join('users','carts.user_id','=','users.id')
                 ->orderby('carts.id','desc')
-                ->select('products.*','products.name as product_name','products.price as products_price','users.*','carts.quantity as cartquantity', 'carts.total_amount as cart_total_amount','users.name as user_name')
+                ->select('products.*','products.name as product_name','products.price as products_price','users.*','carts.quantity as cartquantity', 'carts.total_amount as cart_total_amount','users.name as user_name','carts.id as cart_id')
                 ->get();
         
                 // dd($data);
@@ -400,7 +400,7 @@ class AdminController extends Controller
         ->join('products','carts.product_id','=','products.id')
         ->join('users','carts.user_id','=','users.id')
         ->orderby('carts.id','desc')
-        ->select('products.*','products.name as product_name','products.price as products_price','users.*','carts.quantity as cartquantity', 'carts.total_amount as cart_total_amount','users.name as user_name')
+        ->select('products.*','products.name as product_name','products.price as products_price','users.*','carts.quantity as cartquantity', 'carts.total_amount as cart_total_amount','users.name as user_name','carts.id as cart_id')
         ->paginate(3);
         
     }
@@ -440,5 +440,26 @@ class AdminController extends Controller
 
     return view('admin.view_id_orders',compact('data'));
    }
+
+
+   public function view_id_cart($req)
+    {
+
+        // $info=Cart::find($req);
+
+        $data= DB::table('carts')
+        ->join('products','carts.product_id','=','products.id')
+        ->join('users','carts.user_id','=','users.id')
+        ->where('carts.id',$req)
+        ->select('products.*','products.name as product_name','products.price as products_price','users.*','carts.quantity as cartquantity', 'carts.total_amount as cart_total_amount','users.name as user_name','carts.id as cart_id')
+        ->get();
+
+
+
+        return view('admin.view_id_cart',compact('data'));
+
+    }
+
+
 
 }

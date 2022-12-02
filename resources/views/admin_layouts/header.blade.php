@@ -144,7 +144,7 @@ if(Session::has('user'))
               @foreach ($notification as $notification)
                 
               <li class="message-item">
-                <a href="">
+                <a href="{{url('view/cart',$notification->cart_id)}}">
                   <img src="/admin/assets/img/messages-1.jpg" alt="" class="rounded-circle">
                 <div>
                   <h4>{{$notification->user_name}}</h4>

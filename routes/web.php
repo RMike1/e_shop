@@ -87,5 +87,7 @@ Route::post('search/orders',[AdminController::class,'search_orders']);
 
 Route::get('view/order/{id}',[AdminController::class,'view_id_order']);
 
+Route::get('view/cart/{id}',[AdminController::class,'view_id_cart']);
+
 
 

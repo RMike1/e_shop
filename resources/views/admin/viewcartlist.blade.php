@@ -34,8 +34,7 @@
                   <th class="text-center">Price</th>
                   <th class="text-center">Quantity</th>
                   <th class="text-center">Total_Amount</th>
-                  <th class="text-center">Owner</th>
-                  <th class="text-center">Email</th>
+                  <th class="text-center">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -51,10 +50,14 @@
                   <td>${{number_format($item->products_price)}}</td>
                   <td>{{$item->cartquantity}}</td>
                   <td>${{number_format($item->cart_total_amount)}}</td>
-                  <td>{{$item->user_name}}</td>
-                  <td>{{$item->email}}</td>
+
+                  <td>
+                        <a href="{{url('view/cart',$item->cart_id)}}" class="btn btn-sm btn-primary">View</a>
+                  </td>
                 </tr>
                 
+                
+
                 @endforeach
               </tbody>
             </table>

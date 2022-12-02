@@ -11,7 +11,7 @@
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>View Cart</h1>
+    <h1>View Order</h1>
     
   </div>
   
@@ -23,7 +23,7 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Cart</h5>
+            <h5 class="card-title">Order</h5>
         <div class="table-responsive" >
             <table class="table table-hover">
               <thead>
@@ -82,7 +82,7 @@
                   
                       @if ($item->payment_status=='pending')
   
-                      <span class="badge bg-warning">{{$item->payment_status}}</span>
+                      <span class="badge bg-warning">{{$item->payment_status}}...</span>
                       
   
                       @elseif ($item->payment_status=='order has been canceled')

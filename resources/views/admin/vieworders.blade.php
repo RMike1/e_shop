@@ -45,10 +45,6 @@
                   <th>Price</th>
                   <th>Quantity</th>
                   <th>Total_Amount</th>
-                  <th>Owner</th>
-                  <th>Address</th>
-                  <th>Email</th>
-                  <th>Payment_Method</th>
                   <th>Payment_Status</th>
                   <th>Action</th>
                 </tr>
@@ -66,10 +62,6 @@
                   <td>${{number_format($item->products_price)}}</td>
                   <td>{{$item->ordersquantity}}</td>
                   <td>${{number_format($item->orders_total_amount)}}</td>
-                  <td>{{$item->user_name}}</td>
-                  <td>{{$item->address}}</td>
-                  <td>{{$item->email}}</td>
-                  <td>{{$item->payment_method}}</td>
 
                  
 
@@ -78,7 +70,7 @@
                   
                     @if ($item->payment_status=='pending')
 
-                    <span class="badge bg-warning">{{$item->payment_status}}</span>
+                    <span class="badge bg-warning">{{$item->payment_status}}...</span>
                     
 
                     @elseif ($item->payment_status=='order has been canceled')
@@ -112,9 +104,9 @@
 
                    
                    
-                   <a href="{{url('send_email',$item->orders_id)}}" class="btn btn-sm btn-secondary">Send Email</a>
+                   <a href="{{url('send_email',$item->orders_id)}}" class="btn btn-sm btn-secondary"><span class="ri ri-send-plane-fill"></span></a>
                    
-                   <a href="{{url('view/order',$item->orders_id)}}" class="btn btn-sm btn-primary">View</a>
+                   <a href="{{url('view/order',$item->orders_id)}}" class="btn btn-sm btn-secondary"><span class="ri ri-eye-line"></span></a>
                    
                    
 
