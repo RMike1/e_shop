@@ -97,6 +97,12 @@
                    
                    <a href="{{url('approve_payment',$item->orders_id)}}" onclick="return confirm('are u sure to approve this order?')" class="btn btn-sm btn-success">Approve</a>
                    
+
+                   @elseif ($item->payment_status=='order has been canceled')
+
+                   <button disabled class="btn btn-sm btn-outline-danger">Canceled</button>
+                   
+                   
                    @else
                    <button disabled class="btn btn-sm btn-outline-success">Approved</button>
 

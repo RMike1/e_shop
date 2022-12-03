@@ -27,7 +27,7 @@
                 <div class="row mb-3">
                   <label for="inputText" class="col-form-label">Name</label>
                   <div class="col-sm-12">
-                    <input type="text" class="form-control" name="name">
+                    <input type="text" class="form-control" name="name" required>
                   </div>
                 </div>
 
@@ -35,7 +35,7 @@
                 <div class="row mb-3">
                   <label for="inputNumber" class="col-form-label">Price</label>
                   <div class="col-sm-12">
-                    <input type="number" class="form-control" name="price" min="1">
+                    <input type="number" class="form-control" name="price" min="1" required>
                   </div>
                 </div>
 
@@ -43,7 +43,7 @@
                 <div class="row mb-3">
                   <label for="inputNumber" class="col-form-label">Image</label>
                   <div class="col-sm-12">
-                    <input class="form-control" type="file" id="formFile" name="gallery">
+                    <input class="form-control" type="file" id="formFile" name="gallery" required>
                   </div>
                 </div>
 
@@ -51,7 +51,7 @@
                 <div class="row mb-3">
                   <label for="inputPassword" class="col-form-label">Description</label>
                   <div class="col-sm-12">
-                    <textarea class="form-control" style="height: 100px" name="description"></textarea>
+                    <textarea class="form-control" style="height: 100px" name="description" required></textarea>
                   </div>
                 </div>
 
