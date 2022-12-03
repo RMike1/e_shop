@@ -54,6 +54,7 @@
                   <td>{{Str::limit($item->description,50)}}</td>
                   <td>
 
+                   <a class="btn btn-sm btn-outline-secondary" href="view/product/{{$item->id}}"><span class="ri ri-eye-fill"></span></a> 
                    <a class="btn btn-sm btn-outline-secondary" href="edit/product/{{$item->id}}"><span class="ri ri-edit-box-fill"></span></a> 
                    <a class="btn btn-sm btn-outline-danger" onclick="return confirm('are u sure to delete this item?')" href="delete/product/{{$item->id}}"><span class="ri ri-delete-bin-6-fill"></span></a> 
                   </td>

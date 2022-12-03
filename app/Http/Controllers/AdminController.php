@@ -47,7 +47,7 @@ class AdminController extends Controller
 
             if($user->usertype=='1'){
              
-                $data=product::all();
+                $data=product::orderby('products.id','desc')->get();
 
                 $totalproducts=product::select('products.id')->count();
         
@@ -311,15 +311,15 @@ class AdminController extends Controller
             }
             else
             {
-                $data=Product::paginate(6);
+                $data=Product::orderby('id','desc')->paginate(6);
                 return view('user.index',compact('data'));
 
             }
         }
         else
         {
-            $data=Product::paginate(6);
-            return view('user.index',compact('data'));
+                $data=Product::orderby('products.id','desc')->paginate(6);
+                return view('user.index',compact('data'));
 
         }
     }
@@ -441,6 +441,7 @@ class AdminController extends Controller
     return view('admin.view_id_orders',compact('data'));
    }
 
+   
 
    public function view_id_cart($req)
     {
@@ -460,6 +461,12 @@ class AdminController extends Controller
 
     }
 
+    public function view_id_products($req)
+    {
 
+        $data=Product::find($req);
+        
+        return view('admin.view_id_product',compact('data'));
+    }
 
 }

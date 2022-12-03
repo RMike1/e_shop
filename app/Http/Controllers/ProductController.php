@@ -21,7 +21,8 @@ class ProductController extends Controller
         // // {
         //     if($user->usertype=='0')
         //     {
-                $data=Product::paginate(6);
+                $data=Product::orderby('id','desc')->paginate(6);
+
         
                 return view('user.index',compact('data'));
 
