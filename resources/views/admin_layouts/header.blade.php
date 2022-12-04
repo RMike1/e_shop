@@ -142,14 +142,18 @@ if(Session::has('user'))
               <hr class="dropdown-divider">
             </li>
               @foreach ($notification as $notification)
-                
+                @php
+                  $date= $notification->created_at;
+                  $data= new Carbon\Carbon($date);
+                  $elapse= $data->diffForHumans();
+                @endphp
               <li class="message-item">
                 <a href="{{url('view/cart',$notification->cart_id)}}">
                   <img src="/admin/assets/img/messages-3.jpg" alt="" class="rounded-circle">
                 <div>
                   <h4>{{$notification->user_name}}</h4>
                   <p>has added {{$notification->product_name}} in the cartlist</p>
-                  <p>a min. ago</p>
+                  <p>{{$elapse}}</p>
                 </div>
               </a>
             </li>
@@ -189,6 +193,13 @@ if(Session::has('user'))
               <hr class="dropdown-divider">
             </li>
               @foreach ($order as $order)
+
+              @php
+                
+                $date=$order->created_at;
+                $date=Carbon\Carbon::parse($date);
+                $elapsed=$date->diffForHumans();
+              @endphp
                 
               <li class="message-item">
                 <a href="{{url('view/order',$order->orders_id)}}">
@@ -196,7 +207,7 @@ if(Session::has('user'))
                 <div>
                   <h4>{{$order->user_name}}</h4>
                   <p>has ordered {{$order->product_name}}</p>
-                  <p>a min. ago</p>
+                  <p>{{$elapsed}}</p>
                 </div>
               </a>
             </li>

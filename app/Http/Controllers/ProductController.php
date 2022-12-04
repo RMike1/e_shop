@@ -261,7 +261,7 @@ class ProductController extends Controller
         $user=Session::get('user')['id'];
         $order=DB::table('orders')
         ->join('products','orders.product_id','=','products.id')
-        ->where('orders.user_id',$user)
+        ->where('orders.user_id',$user)->where('orders.payment_status','pending')
         ->select('products.*','orders.*')
         ->get();
 

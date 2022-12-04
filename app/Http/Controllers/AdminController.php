@@ -399,7 +399,7 @@ class AdminController extends Controller
         return DB::table('carts')
         ->join('products','carts.product_id','=','products.id')
         ->join('users','carts.user_id','=','users.id')
-        ->orderby('carts.id','desc')
+        ->orderby('carts.id','desc')->orderby('carts.created_at','desc')->limit(5)
         ->select('products.*','products.name as product_name','products.price as products_price','users.*','carts.quantity as cartquantity', 'carts.total_amount as cart_total_amount','users.name as user_name','carts.id as cart_id')
         ->paginate(3);
         
