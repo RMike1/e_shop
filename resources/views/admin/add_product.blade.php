@@ -39,14 +39,14 @@
                   </div>
                 </div>
 
-
-                <div class="row mb-3">
-                  <label for="inputNumber" class="col-form-label">Image</label>
-                  <div class="col-sm-12">
-                    <input class="form-control" type="file" id="formFile" name="gallery" required>
+          <div class="row mb-3">
+                    <label for="inputNumber" class="col-form-label">Image</label>
+                    <img src="" style="width:80px;heigh:80px" id="PreviewImage" alt="" onerror="this.src='{{asset('image/png.png')}}'">
+                    <div class="col-sm-12">
+                      <input class="form-control" id="InputImage" type="file" name="gallery" required>
+                    </div>
                   </div>
-                </div>
-
+                
                 
                 <div class="row mb-3">
                   <label for="inputPassword" class="col-form-label">Description</label>
@@ -73,4 +73,20 @@
     </section>
 
   </main><!-- End #main -->
+  
+  
+  <script type="text/javascript">
+  
+  InputImage.onchange= evt=>{
+        const[file]=InputImage.files
+
+        if(file)
+        {
+          PreviewImage.src=URL.createObjectURL(file)
+        }
+       
+      }
+  </script>
+
+
 @endsection

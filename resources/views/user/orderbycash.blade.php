@@ -16,6 +16,8 @@
             <form>
                 <div class="products">
                     <h3 class="title">Checkout</h3>
+                    @if (count($order)>0)
+                        
                     @foreach ($order as $item)
                         
                     <div class="item">
@@ -72,6 +74,12 @@
                     </div><hr>
                  
                     @endforeach
+
+                    @else
+
+                    <p class="text-center">there is no data your orderlist!! to order an items please<span><a href="{{url('/')}}" class="nav-link text-info">click here</a></span></p>
+                    @endif
+
 
                     <div class="total fs-5"><span>Total</span><span class="price">${{number_format($totalitems)}}</span></div>
 

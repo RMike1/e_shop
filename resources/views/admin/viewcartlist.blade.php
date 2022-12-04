@@ -38,6 +38,9 @@
                 </tr>
               </thead>
               <tbody>
+                @if (count($data)>0)
+                  
+               
                 @php($count=0)
                 @foreach ($data as $item)
                   @php($count++)
@@ -59,6 +62,13 @@
                 
 
                 @endforeach
+
+                @else
+
+                <tr>
+                  <td colspan="10" class="text-center">there is no data in cartlist!</td>
+                </tr>
+                @endif
               </tbody>
             </table>
           </div>

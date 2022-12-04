@@ -50,6 +50,8 @@
                 </tr>
               </thead>
               <tbody>
+                @if (count($data)>0)
+                  
                 @php($count=0)
                 @forelse ($data as $item)
                   @php($count++)
@@ -113,9 +115,7 @@
                    <a href="{{url('send_email',$item->orders_id)}}" class="btn btn-sm btn-secondary"><span class="ri ri-send-plane-fill"></span></a>
                    
                    <a href="{{url('view/order',$item->orders_id)}}" class="btn btn-sm btn-secondary"><span class="ri ri-eye-line"></span></a>
-                   
-                   
-
+                  
                   </td>
                 </tr>
                 @empty
@@ -127,6 +127,16 @@
                 </tr>
                 
                 @endforelse
+
+                @else
+
+                <tr>
+                  <td colspan="10" class="text-center">
+                         there is no data in order list!!
+                  </td>
+                </tr>
+                @endif
+
               </tbody>
             </table>
           </div>

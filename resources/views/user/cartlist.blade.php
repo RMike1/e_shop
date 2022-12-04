@@ -24,6 +24,8 @@
                     <div class="row g-0">
 
                         <div class="col-md-12 col-lg-8">
+                            @if (count($data)>0)
+                                
                             @php($count = 0)
                             @foreach ($data as $item)
                                 @php($count++)
@@ -73,6 +75,18 @@
                                     </div>
                                 </div>
                             @endforeach
+                            @else
+
+                            <div class="mt-5 text-center">
+                            
+                            <div class="pt-5 mt-5">
+                                    <p> there is no pendings in your cart!!</p>
+                                    <p><a href="{{url('/')}}" class="nav-link text-info" >click here</a> to add more items as you wish!!..</p>
+                            </div>
+                            </div>
+
+                            @endif
+
                         </div>
                         <div class="col-md-12 col-lg-4">
 
@@ -84,9 +98,18 @@
                                         class="price">${{ number_format($totalitems) }}</span></h4>
                                 <h4><span class="text">Discount</span><span class="price">0</span></h4>
                                 <h4><span class="text">Shipping</span><span class="price">$10</span></h4>
-                                <h4><span class="text">Total</span><span
-                                        class="price">${{ number_format($totalitems + 10) }}</span></h4>
-                                <form action="{{ url('payment_on_delivery') }}" method="post">
+
+
+                                @if ($totalitems)
+                                    
+                                <h4><span class="text">Total</span><span class="price">${{ number_format($totalitems + 10) }}</span></h4>
+                                @else
+                                <h4><span class="text">Total</span><span class="price">${{ number_format($totalitems) }}</span></h4>
+
+                                @endif
+                                
+                                
+                                        <form action="{{ url('payment_on_delivery') }}" method="post">
                                     @csrf
 
                                     <input type="text" name="address" class="form-control form-control-sm text-center"
